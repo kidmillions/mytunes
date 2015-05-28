@@ -4,6 +4,7 @@ var AppModel = Backbone.Model.extend({
   initialize: function(params){
     this.set('currentSong', new SongModel());
     this.set('songQueue', new SongQueue());
+    this.set('playlist', new Playlist());
     /* Note that 'this' is passed as the third argument. That third argument is
     the context. The 'play' handler will always be bound to that context we pass in.
     In this example, we're binding it to the App. This is helpful because otherwise
@@ -27,6 +28,26 @@ var AppModel = Backbone.Model.extend({
       this.get('songQueue').unshift(song);
     }, this);
 
-  }
+    params.library.on('playlisted', function(song){
+      this.get('playlist').add(song);
+    }, this);
 
+    this.get('playlist').on('removeFromPlaylist', function(song) {
+      this.get('playlist').remove(song);
+    }, this);
+
+    this.get('playlist').on('moveDown', function(song) {
+      var holdID = this.get('playlist').indexOf(song);
+      this.get('playlist').remove(song);
+      this.get('playlist').add(song, {at: (holdID + 1)});
+    }, this);
+
+    this.get('playlist').on('moveUp', function(song){
+      var holdID = this.get('playlist').indexOf(song);
+      if (holdID > 0) {
+        this.get('playlist').remove(song);
+        this.get('playlist').add(song, {at: (holdID - 1)});
+      }
+    }, this);
+  }
 });

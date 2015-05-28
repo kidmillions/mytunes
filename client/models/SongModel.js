@@ -2,8 +2,9 @@
 var SongModel = Backbone.Model.extend({
   defaults: {
     playCount: 0,
-    // votes: 0
+    rating: 0,
   },
+
 
 
   play: function(){
@@ -22,7 +23,21 @@ var SongModel = Backbone.Model.extend({
   },
   playNow: function() {
     this.trigger('playNow', this);
+  },
+  playlisted: function(){
+    this.trigger('playlisted', this);
+  },
+  removeFromPlaylist: function() {
+    this.trigger('removeFromPlaylist', this);
+  },
+  moveDown: function() {
+    this.trigger('moveDown', this);
+  },
+  moveUp: function() {
+    this.trigger('moveUp', this);
   }
+
+
 
 
 });
