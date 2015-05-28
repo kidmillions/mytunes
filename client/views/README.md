@@ -2,7 +2,7 @@
 
 
 ### Functionality
-(1) There should be a "playing now" song within the player view.
+[X] There should be a "playing now" song within the player view.
   - Songs that are 'playing now' should be dequeued.
   - 'Now Playing' tag on first in queue as it plays.
 
