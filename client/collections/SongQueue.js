@@ -11,9 +11,9 @@ var SongQueue = Songs.extend({
     }
   },
   playNext: function() {
-    this.remove(this.at(0));
+    this.at(0).dequeue();
     if (this.length > 0) {
-      this.playFirst();
+      this.at(0).play();
     }
   }
 });

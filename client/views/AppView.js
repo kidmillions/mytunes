@@ -22,7 +22,7 @@ var AppView = Backbone.View.extend({
       this.currentSongView.$el,
       '<h2>All Songs</h2>',
       this.libraryView.$el,
-      '<h2>Playlist</h2>',
+      '<h2>Song Queue</h2>',
       this.songQueueView.$el
     ]);
   }

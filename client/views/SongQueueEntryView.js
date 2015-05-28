@@ -2,7 +2,7 @@
 var SongQueueEntryView = Backbone.View.extend({
   // your code here!
   template: _.template('<div>(<%= artist %>)</div><div><%= title %></div>\
-    <div id = "play">Play</div><div id="dequeue">Remove From Playlist</div>'),
+    <div id = "play">Play</div><div id="dequeue">Remove From Queue</div>'),
 
   events: {
     'click #play': function() {
