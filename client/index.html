@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css" />
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css" media="screen,projection" />
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     </head>
-  <body>
-    <!-- Scripts may be placed anywhere on a page. But FYI, they block rendering of elements
-     below them until after the scripts load-->
+  <body class="blue lighten-1">
+    <div class='container'>
+        <h1 class="center-align">MyTunes (No Tunes 4 U)</h1>
+    </div>
+
+
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/backbone/backbone.js"></script>
@@ -37,9 +41,22 @@
         var appView = new AppView({model: app});
         // debugger;
         // put the view onto the screen
-        $('body').append(appView.render());
-
+        $('.container').append(appView.render());
       });
+
+      $(document).ready(function() {
+
+        $('.dropdown-button').dropdown({
+            inDuration: 300,
+            outDuration: 225,
+            constrain_width: false, // Does not change width of dropdown to that of the activator
+            hover: true, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: false // Displays dropdown below the button
+          }
+        );
+
+      })
     </script>
   </body>
 </html>

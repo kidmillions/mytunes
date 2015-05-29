@@ -1,3 +1,18 @@
-.now-playing {
-  color: red;
+.container {
+  background-color: white;
+}
+
+
+.library-buttons a {
+  width: 30%;
+  padding: 0 1.5%;
+}
+
+.artist-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.song-box {
+  line-height: 0.3;
 }

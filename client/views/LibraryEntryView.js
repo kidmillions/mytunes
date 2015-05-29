@@ -1,17 +1,32 @@
 // LibraryEntryView.js - Defines a backbone view class for the entries that will appear within the library views. These will be inserted using the "subview" pattern.
 var LibraryEntryView = Backbone.View.extend({
 
-  tagName: 'tr',
+  tagName: 'div',
 
-  template: _.template('<div>(<%= artist %>)</div><div><%= title %></div>\
-                        <div id = "play">Play</div>\
-                        <div id="enqueue">Add to Queue</div>\
-                        <div id="playlisted">Add to Playlist</div>\
-                        <div>Play Count: (<%= playCount %>)</div>\
-                        <div><select name="rating" class="rating"><option value="0">0</option><option value="1">1</option>\
-                        <option value="2">2</option><option value="3">3</option>\
-                        <option value="4">4</option><option value="5">5</option>\
-                        </select></div><div><%= rating %></div>'),
+  template: _.template('<div class="col s4 song-box">\
+                          <p><%= title %></p>\
+                          <p class="artist-name"><%= artist %></p>\
+                        </div>\
+                        <div class="col s5 library-buttons">\
+                            <a class="btn" id="play" href = "#!">Play</a>\
+                            <a class="btn" id="enqueue" href = "#!">Queue+</a>\
+                            <a class="btn" id="playlisted" href = "#!">Playlist+</a>\
+                        </div>\
+                        <div class="col s2">\
+                          <div class="input-field">\
+                            <select name="rating" class="rating">\
+                              <option value="0">0</option>\
+                              <option value="1">1</option>\
+                              <option value="2">2</option>\
+                              <option value="3">3</option>\
+                              <option value="4">4</option>\
+                              <option value="5">5</option>\
+                            </select>\
+                          </div>\
+                        </div>\
+                        <div class="col s1">\
+                          <span><%= playCount %> plays</span>\
+                        </div>'),
 
   events: {
     'click #play': function() {
@@ -33,7 +48,13 @@ var LibraryEntryView = Backbone.View.extend({
   render: function(){
     // console.log(this.model.get('rating'));
     this.$el.html(this.template(this.model.attributes));
+    // this.$el.find('ul').attr('id', ('dropdown' + this.model.cid));
+    // this.$el.find('.dropdown-button').attr('data-activates', ('dropdown' + this.model.cid));
+    this.$el.addClass('row');
+    this.$el.attr('href', '#!');
+
     this.$el.find('.rating').val(this.model.get('rating'));
+    this.$el.find('select').material_select();
     return this.$el;
   }
 
