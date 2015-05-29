@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     </head>
   <body class="blue lighten-1">
-    <div class='container'>
-        <h1 class="center-align">MyTunes (No Tunes 4 U)</h1>
-    </div>
 
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -41,7 +38,7 @@
         var appView = new AppView({model: app});
         // debugger;
         // put the view onto the screen
-        $('.container').append(appView.render());
+        $('body').append(appView.render());
       });
 
       $(document).ready(function() {

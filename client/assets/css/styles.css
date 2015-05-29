@@ -2,6 +2,32 @@
   background-color: white;
 }
 
+nav audio {
+	margin-top: 16px;
+	margin-left: 5px;
+}
+
+nav .right {
+	padding-right: 10px;
+}
+
+nav .now-playing {
+	font-size: 22px;
+	font-weight: bold;
+}
+
+nav .play-count {
+	padding-left: 5px;
+}
+
+.row .library-buttons, .row .playcount-box, .row .s1 {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.row .input-field {
+	margin-top: .6rem;
+}
 
 .library-buttons a {
   width: 30%;
@@ -15,4 +41,20 @@
 
 .song-box {
   line-height: 0.3;
+}
+
+.library-box {
+	margin: 0px;
+}
+
+.library-box i {
+	font-size: 30px;
+}
+
+.library-box:nth-child(2n) {
+	background-color: #5c6bc0;
+}
+
+.library-box:nth-child(2n) i {
+	color: white;
 }

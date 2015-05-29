@@ -20,25 +20,25 @@ var AppView = Backbone.View.extend({
 
 
 
+
   render: function(){
+    console.log(this.playerView.$el);
+    
+    var $nav = $('<div class="navbar-fixed"><nav><div class="nav-wrapper"><div class="right"></div></div></nav></div>');
+    $nav.find(".nav-wrapper").prepend(this.playerView.$el);
+    $nav.find(".right").append(this.currentSongView.$el);
+
+    var $container = $('<div class="container"></div>');
+    var $libraryRow = $('<div class="row"><div class="col s12"></div></div>')
+    var $queuePlaylistRow = $('<div class="row"><div class="col s6 queue-box"></div><div class="col s6 playlist-box"></div></div>')
+    $libraryRow.append(this.libraryView.$el);
+    $queuePlaylistRow.find('.queue-box').append(["<h3>My Queue</h3>",this.songQueueView.$el]);
+    $queuePlaylistRow.find('.playlist-box').append(["<h3>My Playlist</h3>",this.playlistView.$el]);
+    $container.append([$queuePlaylistRow, $libraryRow])
+
     return this.$el.html([
-      '<div class="row">',
-      this.playerView.$el,
-      '</div><div class="row">',
-      '<h2>CURRENTLY PLAYING</h2>',
-      this.currentSongView.$el,
-      '</div><div class="row">',
-      '<div class="col s12">',
-      '<h2 class="center-align">All Songs</h2>',
-      this.libraryView.$el,
-      '</div>',
-      '</div><div class="row">',
-      '<h2>Song Queue</h2>',
-      this.songQueueView.$el,
-      '</div><div class="row">',
-      '<h2>Playlist! (aka Song Queue List!)</h2>',
-      this.playlistView.$el,
-      '</div>'
+      $nav,
+      $container
     ]);
   }
 

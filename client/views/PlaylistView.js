@@ -1,5 +1,5 @@
 var PlaylistView = Backbone.View.extend({
-  el: '<div></div>',
+  tagName: 'div',
 
   events: {
     'click .addToQueue': 'addToQueue',
@@ -11,7 +11,7 @@ var PlaylistView = Backbone.View.extend({
   },
 
   render: function(){
-    this.$el.html('<div class="btn addToQueue">Let\'s rock</div><div class="btn savePlaylist">This playlist is READY</div>');
+    this.$el.html('<div class="btn addToQueue">Play Now</div><div class="btn savePlaylist">Save</div>');
     this.collection.forEach(this.renderPlaylistView, this);
   },
 

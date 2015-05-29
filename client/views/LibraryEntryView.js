@@ -3,18 +3,19 @@ var LibraryEntryView = Backbone.View.extend({
 
   tagName: 'div',
 
-  template: _.template('<div class="col s4 song-box">\
+  template: _.template('<div class="col s3 song-box">\
                           <p><%= title %></p>\
                           <p class="artist-name"><%= artist %></p>\
                         </div>\
                         <div class="col s5 library-buttons">\
-                            <a class="btn" id="play" href = "#!">Play</a>\
-                            <a class="btn" id="enqueue" href = "#!">Queue+</a>\
-                            <a class="btn" id="playlisted" href = "#!">Playlist+</a>\
+                            <a><i id="play" class="small mdi-av-play-arrow"></i></a>\
+                            <a><i id="enqueue" class="small mdi-av-queue"></i></a>\
+                            <a><i id="playlisted" class="small mdi-av-playlist-add"></i></a>\
                         </div>\
+                        <div class="col s1">Rating:</div>\
                         <div class="col s2">\
                           <div class="input-field">\
-                            <select name="rating" class="rating">\
+                            <select name="rating" class="rating browser-default">\
                               <option value="0">0</option>\
                               <option value="1">1</option>\
                               <option value="2">2</option>\
@@ -24,13 +25,13 @@ var LibraryEntryView = Backbone.View.extend({
                             </select>\
                           </div>\
                         </div>\
-                        <div class="col s1">\
+                        <div class="col s1 playcount-box">\
                           <span><%= playCount %> plays</span>\
                         </div>'),
 
   events: {
     'click #play': function() {
-      this.model.play();
+      // this.model.play();
       this.model.playNow();
     },
     'click #enqueue': function() {
@@ -46,12 +47,10 @@ var LibraryEntryView = Backbone.View.extend({
   },
 
   render: function(){
-    // console.log(this.model.get('rating'));
     this.$el.html(this.template(this.model.attributes));
     // this.$el.find('ul').attr('id', ('dropdown' + this.model.cid));
     // this.$el.find('.dropdown-button').attr('data-activates', ('dropdown' + this.model.cid));
-    this.$el.addClass('row');
-    this.$el.attr('href', '#!');
+    this.$el.addClass('row library-box');
 
     this.$el.find('.rating').val(this.model.get('rating'));
     this.$el.find('select').material_select();
